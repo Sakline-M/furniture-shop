@@ -102,7 +102,7 @@ const Product = () => {
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut",  delay: 0.2 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className={`flex flex-row lg:text-3xl md:text-2xl transition-all font-semibold ${
               activeCategory === category
                 ? "text-gray-800 underline underline-offset-4 decoration-rose-400"

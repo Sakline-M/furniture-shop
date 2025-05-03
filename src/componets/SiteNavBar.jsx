@@ -55,7 +55,7 @@ const SiteNavBar = () => {
             Home
           </a>
           <a
-            href="#"
+            href="/about"
             className="text-gray-700 hover:text-rose-500 hover:underline transition duration-300 transform hover:-translate-y-1"
           >
             About
