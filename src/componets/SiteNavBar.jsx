@@ -49,7 +49,7 @@ const SiteNavBar = () => {
           } sm:flex flex-col sm:flex-row gap-4 sm:gap-6 text-lg font-semibold mt-3 sm:mt-0`}
         >
           <a
-            href="#"
+            href="/"
             className="text-gray-700 hover:text-rose-500 hover:underline transition duration-300 transform hover:-translate-y-1"
           >
             Home
@@ -61,7 +61,7 @@ const SiteNavBar = () => {
             About
           </a>
           <a
-            href="#"
+            href="/contact"
             className="text-gray-700 hover:text-rose-500 hover:underline transition duration-300 transform hover:-translate-y-1"
           >
             Contact
