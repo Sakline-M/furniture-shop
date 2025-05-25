@@ -96,13 +96,8 @@ const Product = () => {
       {/* Header with Dynamic Tabs */}
       <div className="flex justify-center text-[12px] gap-3 lg:gap-6 md:gap-6 text-center lg:mb-10 md:mb-10">
         {categories.map((category) => (
-          <motion.button
+          <button
             key={category}
-            onClick={() => setActiveCategory(category)}
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut",  delay: 0.2 }}
-            viewport={{ once: true }}
             className={`flex flex-row lg:text-3xl md:text-2xl transition-all font-semibold ${
               activeCategory === category
                 ? "text-gray-800 underline underline-offset-4 decoration-rose-400"
@@ -110,7 +105,7 @@ const Product = () => {
             }`}
           >
             {category}
-          </motion.button>
+          </button>
         ))}
       </div>
 

@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model brands {
+  id        Int        @id @default(autoincrement()) @db.UnsignedInt
+  brandName String     @db.VarChar(50)
+  brandImg  String     @db.VarChar(300)
+  createdAt DateTime   @default(now()) @db.Timestamp(0)
+  updatedAt DateTime   @default(now()) @updatedAt @db.Timestamp(0)
+  products  products[]
+}
+
+model categories {
+  id           Int        @id @default(autoincrement()) @db.UnsignedInt
+  categoryName String     @db.VarChar(50)
+  categoryImg  String     @db.VarChar(300)
+  createdAt    DateTime   @default(now()) @db.Timestamp(0)
+  updatedAt    DateTime   @default(now()) @updatedAt @db.Timestamp(0)
+  products     products[]
+}
+
+model products {
+  id              Int              @id @default(autoincrement()) @db.UnsignedInt
+  title           String           @db.VarChar(200)
+  short_des       String           @db.VarChar(200)
+  price           String           @db.VarChar(200)
+  discount_price  String           @db.VarChar(50)
+  image           String           @db.VarChar(200)
+  discount        Boolean
+  stock           Boolean
+  star            Float
+  remark          products_remark
+  category_id     Int              @db.UnsignedInt
+  brand_id        Int              @db.UnsignedInt
+  createdAt       DateTime         @default(now()) @db.Timestamp(0)
+  updatedAt       DateTime         @default(now()) @updatedAt @db.Timestamp(0)
+  product_details product_details?
+  brands          brands           @relation(fields: [brand_id], references: [id])
+  categories      categories       @relation(fields: [category_id], references: [id])
+
+  @@index([brand_id], map: "products_brand_id_fkey")
+  @@index([category_id], map: "products_category_id_fkey")
+}
+
+model product_details {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  img1       String   @db.VarChar(200)
+  img2       String   @db.VarChar(200)
+  img3       String   @db.VarChar(200)
+  img4       String   @db.VarChar(200)
+  des        String   @db.LongText
+  color      String   @db.VarChar(200)
+  size       String   @db.VarChar(200)
+  product_id Int      @unique @db.UnsignedInt
+  createdAt  DateTime @default(now()) @db.Timestamp(0)
+  updatedAt  DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  products   products @relation(fields: [product_id], references: [id])
+}
+
+enum products_remark {
+  popular
+  new
+  top
+  special
+  regular
+  tranding
+}

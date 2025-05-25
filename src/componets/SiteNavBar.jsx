@@ -1,22 +1,24 @@
-'use client'
-import React, { useState } from 'react'
-import { HiMenu, HiX } from 'react-icons/hi'
+"use client";
+import React, { useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi";
 
 const SiteNavBar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="w-full bg-gray-100 text-gray-800 shadow-md">
       <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-3 sm:py-4 gap-2 sm:gap-0 transition-all duration-500">
-        
         {/* Top Row (Logo + Search on small screens) */}
         <div className="w-full flex items-center justify-between sm:justify-start sm:w-auto sm:mr-8">
           {/* Logo */}
-          <div className="text-xl font-bold text-rose-500 tracking-tight sm:text-3xl">
+          <a
+            href="/"
+            className="text-xl font-bold text-rose-500 tracking-tight sm:text-3xl"
+          >
             SAKIfurniture
-          </div>
+          </a>
 
           {/* Search (hidden on sm and above) */}
           <div className="sm:hidden w-1/2">
@@ -28,7 +30,10 @@ const SiteNavBar = () => {
           </div>
 
           {/* Hamburger Menu */}
-          <button onClick={toggleMenu} className="sm:hidden text-2xl text-gray-700">
+          <button
+            onClick={toggleMenu}
+            className="sm:hidden text-2xl text-gray-700"
+          >
             {isOpen ? <HiX /> : <HiMenu />}
           </button>
         </div>
@@ -45,7 +50,7 @@ const SiteNavBar = () => {
         {/* Right: Nav Links */}
         <div
           className={`${
-            isOpen ? 'flex' : 'hidden'
+            isOpen ? "flex" : "hidden"
           } sm:flex flex-col sm:flex-row gap-4 sm:gap-6 text-lg font-semibold mt-3 sm:mt-0`}
         >
           <a
@@ -69,7 +74,7 @@ const SiteNavBar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default SiteNavBar
+export default SiteNavBar;
